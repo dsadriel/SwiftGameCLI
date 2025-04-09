@@ -1,9 +1,10 @@
 import Foundation
 import os
 
-class Game {
+public class Game {
     lazy var terminal = Terminal()
     var isRunning = true
+    var updateInterval = 100 // in ms
 
     public func start() {
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
@@ -20,7 +21,7 @@ class Game {
             loop()  // Update game state
             draw()  // Update canvas
             terminal.render()  // Render canvas
-            usleep(100_000)  // Sleep for 100ms
+            usleep(updateInterval*1000) 
         }
     }
 

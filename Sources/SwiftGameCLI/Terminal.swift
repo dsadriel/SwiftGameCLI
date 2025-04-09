@@ -1,6 +1,6 @@
 import Foundation
 
-struct Terminal {
+public struct Terminal {
 
     // MARK: - Canvas
     private(set) var canvas: [[Character]] = TerminalHelper.makeCanvas()
@@ -43,7 +43,7 @@ struct Terminal {
     }
 }
 
-extension Terminal {
+public extension Terminal {
     static func getKeyPress() -> String? {
         var buffer = [UInt8](repeating: 0, count: 3)
         let readBytes = read(STDIN_FILENO, &buffer, 3)
